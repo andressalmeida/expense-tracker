@@ -3,6 +3,7 @@ import * as C from "./styles";
 import { ChangeEvent, useState } from "react";
 import { categories } from "../../data/categories";
 import { newDateAdjusted } from "../../utils/dateFilter";
+import { v4 as uuidv4 } from "uuid";
 
 type Props = {
   onAdd: (item: ItemType) => void;
@@ -36,6 +37,7 @@ export const InputArea = ({ onAdd }: Props) => {
       alert(errors.join("\n"));
     } else {
       let newItem: ItemType = {
+        id: uuidv4(),
         date: newDateAdjusted(inputDate),
         category: inputCategory,
         title: inputTitle,

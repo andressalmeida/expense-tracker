@@ -48,6 +48,11 @@ const App = () => {
     setList(newList);
   }
 
+  const handleDeleteItem = (itemId: string) => {
+    let newList = list.filter(item => item.id !== itemId)
+    setList(newList)
+  }
+
   return (
     <C.Container>
       <C.Header>
@@ -64,7 +69,7 @@ const App = () => {
 
         <InputArea onAdd={handleAddItem}/>
 
-        <TableArea list={filteredList} />
+        <TableArea list={filteredList} onDelete={handleDeleteItem}/>
       </C.Body>
     </C.Container>
   );
